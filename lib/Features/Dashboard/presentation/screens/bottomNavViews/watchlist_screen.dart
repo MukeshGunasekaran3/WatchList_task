@@ -117,6 +117,7 @@ class _WatchlistScreenState extends State<WatchlistScreen>
                             ],
                           )),
                       onTap: () {
+                        FocusScope.of(context).unfocus();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
