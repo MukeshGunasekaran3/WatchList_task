@@ -10,6 +10,7 @@ import 'package:watchlist_task/Features/Dashboard/presentation/blocs/watchlist_e
 import 'package:watchlist_task/Features/Dashboard/presentation/blocs/watchlist_state.dart';
 import 'package:watchlist_task/Features/Dashboard/presentation/screens/bottomNavViews/searchScreen.dart';
 import 'package:watchlist_task/Features/Dashboard/presentation/widgets/custom_ListTile.dart';
+import 'package:watchlist_task/Features/Dashboard/presentation/widgets/custom_textformfield.dart';
 import 'package:watchlist_task/core/theme/color_palete.dart';
 
 class WatchlistScreen extends StatefulWidget {
@@ -90,41 +91,39 @@ class _WatchlistScreenState extends State<WatchlistScreen>
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                          hintText: 'Search & Add',
-                          prefixIcon: Icon(Icons.search),
-                          suffixIcon: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Icon(
-                                size: 18,
-                                Icons.grid_view_sharp,
-                                color: ColorPallete.dark_secondaryColor,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                size: 18,
-                                Icons.settings_input_composite_rounded,
-                                color: ColorPallete.dark_secondaryColor,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              )
-                            ],
-                          )),
-                      onTap: () {
-                        FocusScope.of(context).unfocus();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SearchScreen()),
-                        );
-                      },
-                    ),
+                    child: CustomTextformfield(
+                        onTap: () {
+                          FocusScope.of(context).unfocus();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SearchScreen()),
+                          );
+                        },
+                        hintText: 'Search & Add',
+                        prefixIcon: const Icon(Icons.search),
+                        suffixIcon: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              size: 18,
+                              Icons.grid_view_sharp,
+                              color: ColorPallete.dark_secondaryColor,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              size: 18,
+                              Icons.settings_input_composite_rounded,
+                              color: ColorPallete.dark_secondaryColor,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            )
+                          ],
+                        )),
                   ),
                   Expanded(
                     child: BlocBuilder<WatchListBloc, WatchListState>(
